@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posture et Outils du Mentorat LD – Formation Certifiante</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #FF00CC;
+    --violet: #6D2D91;
+    --bleu: #33CCFF;
+    --anthracite: #1D1D1B;
+    --blanc: #FFFFFF;
+    --gris-clair: #F8F4FC;
+    --gris-moyen: #EEE6F7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--anthracite);
+    background: var(--blanc);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV FIXE ── */
+  nav.topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(29,29,27,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,0,204,0.2);
+    padding: 0 32px;
+  }
+  .nav-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0;
+    height: 52px;
+    overflow-x: auto;
+  }
+  .nav-inner a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 16px;
+    height: 52px;
+    display: flex; align-items: center;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-inner a:hover, .nav-inner a.active {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--anthracite);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SVG BANNER */
+  .header-svg-banner {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .header-inner {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 32px 52px;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,0,204,0.35);
+    border-radius: 40px;
+    padding: 7px 18px;
+    margin-bottom: 22px;
+    font-size: 0.78rem;
+    color: var(--bleu);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .logo-badge::before { content: "✦"; color: var(--rose); }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  header h1 span { color: var(--rose); }
+
+  .accroche {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-size: 0.82rem;
+    color: var(--bleu);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+  }
+
+  /* SVG Card in header */
+  .header-visual-card {
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  main { max-width: 960px; margin: 0 auto; padding: 0 32px 80px; }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--violet);
+    margin-bottom: 6px;
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 34px;
+    background: var(--rose);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .section-sub {
+    color: #888;
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+    padding-left: 18px;
+  }
+
+  /* ── OBJECTIFS ── */
+  .objectifs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    gap: 14px;
+  }
+  .objectif-card {
+    background: var(--gris-clair);
+    border-left: 4px solid var(--rose);
+    border-radius: 12px;
+    padding: 20px 22px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .objectif-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(109,45,145,0.12);
+  }
+  .obj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--rose);
+    opacity: 0.25;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .objectif-card p { font-size: 0.9rem; }
+
+  /* ── BARRE DE PROGRESSION JOURNÉE ── */
+  .timeline-wrap {
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .timeline {
+    display: flex;
+    min-width: 640px;
+    height: 64px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .tl-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.2s;
+    padding: 4px 6px;
+    text-align: center;
+    line-height: 1.2;
+    color: white;
+    position: relative;
+  }
+  .tl-block:hover { filter: brightness(1.15); }
+  .tl-block .tl-time { font-size: 0.65rem; font-weight: 600; opacity: 0.8; }
+  .tl-s1  { background: var(--violet); flex: 0.5; }
+  .tl-s2  { background: #9B3DB8; flex: 1.2; }
+  .tl-s3  { background: var(--violet); flex: 1.1; }
+  .tl-p1  { background: #555; flex: 0.4; font-size: 0.6rem; }
+  .tl-s4  { background: #C4007F; flex: 1.8; }
+  .tl-dej { background: #333; flex: 2; font-size: 0.6rem; }
+  .tl-s5  { background: #9B3DB8; flex: 1.5; }
+  .tl-p2  { background: #555; flex: 0.4; font-size: 0.6rem; }
+  .tl-s6  { background: var(--violet); flex: 1.2; }
+  .tl-s7  { background: #C4007F; flex: 0.5; }
+
+  .tl-legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-bottom: 28px; font-size: 0.8rem;
+  }
+  .tl-leg-item { display: flex; align-items: center; gap: 6px; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── PROGRAMME ACCORDÉON ── */
+  .programme-list { display: flex; flex-direction: column; gap: 7px; }
+
+  .module {
+    border-radius: 13px;
+    overflow: hidden;
+    border: 1px solid var(--gris-moyen);
+    background: var(--blanc);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .module-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .module-btn:hover { background: var(--gris-clair); }
+  .module-btn[aria-expanded="true"] { background: var(--gris-clair); }
+  .mod-time {
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--bleu);
+    background: rgba(51,204,255,0.11);
+    border-radius: 8px;
+    padding: 4px 6px;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .mod-title { font-weight: 700; font-size: 0.97rem; color: var(--anthracite); }
+  .mod-subtitle { font-size: 0.8rem; color: #999; margin-top: 2px; }
+  .mod-arrow {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--gris-moyen);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.2s;
+    flex-shrink: 0; color: var(--violet); font-size: 0.7rem;
+  }
+  .module-btn[aria-expanded="true"] .mod-arrow {
+    transform: rotate(180deg);
+    background: var(--rose); color: white;
+  }
+  .module-body {
+    display: none;
+    padding: 0 22px 20px;
+    border-top: 1px solid var(--gris-moyen);
+  }
+  .module-body.open { display: block; }
+  .module-body p { font-size: 0.88rem; color: #555; margin-top: 10px; }
+  .tag-row { margin-top: 10px; }
+  .method-tag {
+    display: inline-block;
+    background: rgba(109,45,145,0.08);
+    color: var(--violet);
+    border-radius: 20px;
+    padding: 4px 11px;
+    font-size: 0.76rem; font-weight: 700;
+    margin: 4px 4px 0 0;
+  }
+  .access-tag {
+    display: inline-block;
+    background: rgba(51,204,255,0.1);
+    color: #0099BB;
+    border-radius: 20px;
+    padding: 4px 11px;
+    font-size: 0.76rem; font-weight: 700;
+    margin: 4px 4px 0 0;
+  }
+  .pause-row {
+    padding: 11px 22px;
+    background: rgba(255,0,204,0.03);
+    border: 1px dashed rgba(255,0,204,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.83rem; color: #999;
+  }
+
+  /* ── INFOS PRATIQUES ── */
+  .infos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+  }
+  .info-card {
+    background: var(--gris-clair);
+    border-radius: 13px;
+    padding: 22px;
+    border-top: 3px solid var(--violet);
+    transition: transform 0.2s;
+  }
+  .info-card:hover { transform: translateY(-2px); }
+  .info-icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--violet); font-weight: 700; margin-bottom: 4px; }
+  .info-value { font-weight: 600; font-size: 0.92rem; }
+
+  /* ── CARTE ── */
+  .map-wrapper {
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+    border: 2px solid var(--gris-moyen);
+    margin-top: 28px;
+  }
+  .map-wrapper iframe { display: block; width: 100%; height: 340px; border: none; }
+
+  /* ── TÉLÉCHARGEMENTS ── */
+  .dl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .dl-btn {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 22px;
+    border-radius: 13px;
+    border: 2px solid var(--rose);
+    background: var(--blanc);
+    text-decoration: none;
+    color: var(--anthracite);
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: all 0.25s;
+  }
+  .dl-btn:hover {
+    background: var(--rose); color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(255,0,204,0.22);
+  }
+  .dl-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: rgba(255,0,204,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+    transition: background 0.25s;
+  }
+  .dl-btn:hover .dl-icon { background: rgba(255,255,255,0.2); }
+  .dl-subtitle { font-weight: 400; font-size: 0.78rem; opacity: 0.6; margin-top: 2px; }
+
+  /* ── TÉMOIGNAGES ── */
+  .temoignages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .temoignage-card {
+    background: var(--gris-clair);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    border: 1px solid var(--gris-moyen);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .temoignage-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(109,45,145,0.1);
+  }
+  .temoignage-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--rose);
+    opacity: 0.15;
+    position: absolute;
+    top: 10px; left: 18px;
+    line-height: 1;
+  }
+  .temoignage-texte {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .temoignage-auteur {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .tem-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; font-weight: 700; color: white;
+    flex-shrink: 0; font-family: 'Playfair Display', serif;
+  }
+  .tem-name { font-weight: 700; font-size: 0.87rem; }
+  .tem-role { font-size: 0.76rem; color: #999; }
+  .stars { color: var(--rose); font-size: 0.8rem; margin-bottom: 10px; }
+
+  /* ── FORMULAIRE ── */
+  .form-wrapper {
+    background: var(--gris-clair);
+    border-radius: 20px;
+    padding: 36px;
+    border: 1px solid var(--gris-moyen);
+    margin-top: 8px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1.5px solid var(--gris-moyen);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--anthracite);
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(255,0,204,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-btn {
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 40px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .form-btn:hover {
+    background: var(--violet);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(109,45,145,0.3);
+  }
+  .form-success {
+    display: none;
+    background: rgba(109,45,145,0.08);
+    border: 2px solid var(--violet);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+    color: var(--violet);
+    font-weight: 700;
+    margin-top: 16px;
+    font-size: 0.95rem;
+  }
+
+  /* ── ÉQUIPE ── */
+  .equipe-card {
+    background: linear-gradient(135deg, var(--gris-clair), rgba(109,45,145,0.05));
+    border-radius: 20px;
+    padding: 30px;
+    display: flex; align-items: center; gap: 22px;
+    border: 1px solid var(--gris-moyen);
+    margin-top: 28px;
+  }
+  .avatar {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .equipe-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--violet); }
+  .equipe-role { color: #888; font-size: 0.83rem; margin-bottom: 6px; }
+  .equipe-contacts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: white; border: 1px solid var(--gris-moyen);
+    border-radius: 30px; padding: 6px 14px;
+    font-size: 0.82rem; color: var(--anthracite);
+    text-decoration: none; font-weight: 600;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--rose); color: var(--rose); }
+
+  /* ── RSE ── */
+  .rse-strip {
+    background: linear-gradient(90deg, rgba(109,45,145,0.06), rgba(255,0,204,0.04), rgba(51,204,255,0.06));
+    border-top: 2px solid var(--gris-moyen);
+    border-bottom: 2px solid var(--gris-moyen);
+    margin-top: 64px;
+    padding: 22px 32px;
+  }
+  .rse-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; flex-wrap: wrap;
+    gap: 20px; align-items: center; justify-content: center;
+  }
+  .rse-item {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.83rem; font-weight: 700; color: var(--violet);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--anthracite);
+    color: rgba(255,255,255,0.68);
+    padding: 48px 32px 28px;
+  }
+  .footer-inner {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: white; margin-bottom: 10px;
+  }
+  .footer-brand span { color: var(--rose); }
+  footer a { color: var(--bleu); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-bottom {
+    max-width: 960px; margin: 28px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.09);
+    text-align: center; font-size: 0.78rem; opacity: 0.45;
+  }
+  .inclusion-btn {
+    display: inline-block;
+    background: var(--violet);
+    color: white !important;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-size: 0.83rem; font-weight: 700;
+    text-decoration: none !important;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .inclusion-btn:hover { background: var(--rose) !important; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .header-inner { grid-template-columns: 1fr; }
+    .header-visual-card { display: none; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .equipe-card { flex-direction: column; text-align: center; }
+    .equipe-contacts { justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+    main { padding: 0 18px 60px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up  { animation: fadeUp 0.55s ease both; }
+  .fade-up-2 { animation: fadeUp 0.55s 0.12s ease both; }
+  .fade-up-3 { animation: fadeUp 0.55s 0.25s ease both; }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="topnav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="#objectifs">Objectifs</a>
+    <a href="#programme">Programme</a>
+    <a href="#pratique">Pratique</a>
+    <a href="#lieu">Lieu</a>
+    <a href="#telechargements">Documents</a>
+    <a href="#temoignages">Témoignages</a>
+    <a href="#inscription">S'inscrire</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── HEADER ── -->
+<header>
+  <!-- BANNIÈRE SVG MONS -->
+  <svg class="header-svg-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- Grille géométrique -->
+    <defs>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FF00CC" stroke-width="0.5"/>
+      </pattern>
+      <radialGradient id="glow1" cx="80%" cy="20%" r="40%">
+        <stop offset="0%" stop-color="#FF00CC" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#FF00CC" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glow2" cx="15%" cy="75%" r="35%">
+        <stop offset="0%" stop-color="#33CCFF" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#33CCFF" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glow3" cx="50%" cy="50%" r="30%">
+        <stop offset="0%" stop-color="#6D2D91" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#6D2D91" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="500" fill="url(#grid)"/>
+    <ellipse cx="960" cy="100" rx="280" ry="240" fill="url(#glow1)"/>
+    <ellipse cx="180" cy="375" rx="220" ry="180" fill="url(#glow2)"/>
+    <ellipse cx="600" cy="250" rx="200" ry="160" fill="url(#glow3)"/>
+    <!-- Cercles décoratifs -->
+    <circle cx="950" cy="80"  r="120" fill="none" stroke="#FF00CC" stroke-width="1" opacity="0.4"/>
+    <circle cx="950" cy="80"  r="190" fill="none" stroke="#FF00CC" stroke-width="0.5" opacity="0.2"/>
+    <circle cx="200" cy="380" r="80"  fill="none" stroke="#33CCFF" stroke-width="1" opacity="0.4"/>
+    <!-- Lignes diagonales -->
+    <line x1="0" y1="500" x2="500" y2="0" stroke="#6D2D91" stroke-width="0.8" opacity="0.3"/>
+    <line x1="200" y1="500" x2="700" y2="0" stroke="#FF00CC" stroke-width="0.5" opacity="0.2"/>
+    <line x1="700" y1="500" x2="1200" y2="0" stroke="#33CCFF" stroke-width="0.5" opacity="0.2"/>
+    <!-- Points -->
+    <circle cx="100" cy="100" r="3" fill="#FF00CC" opacity="0.6"/>
+    <circle cx="300" cy="200" r="2" fill="#33CCFF" opacity="0.5"/>
+    <circle cx="800" cy="300" r="3" fill="#FF00CC" opacity="0.4"/>
+    <circle cx="1100" cy="150" r="2" fill="#6D2D91" opacity="0.6"/>
+    <circle cx="600" cy="450" r="4" fill="#33CCFF" opacity="0.3"/>
+  </svg>
+
+  <div class="header-inner">
+    <div>
+      <div class="logo-badge fade-up">Formation intra-entreprise · Fondation LD / ODC</div>
+      <h1 class="fade-up-2">Posture et Outils<br>du <span>Mentorat LD</span></h1>
+      <p class="accroche fade-up-3">Transformez votre expertise de dirigeant en une posture d'accompagnement puissante. Guidez les entrepreneurs de l'innovation sociale avec justesse, écoute active et cadre sécurisant.</p>
+      <div class="header-meta fade-up-3">
+        <span class="meta-pill">⏱ 7 heures · 1 jour</span>
+        <span class="meta-pill">📍 Sartrouville (78)</span>
+        <span class="meta-pill">🎯 Présentiel · Méthodes actives</span>
+        <span class="meta-pill">📅 Délai d'accès : 4 semaines</span>
+      </div>
+    </div>
+
+    <!-- Carte SVG décorative dans le header -->
+    <div class="header-visual-card fade-up-3">
+      <svg width="230" height="230" viewBox="0 0 230 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF00CC" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#6D2D91" stop-opacity="0.45"/>
+          </linearGradient>
+        </defs>
+        <rect width="230" height="230" rx="24" fill="url(#cardGrad)" stroke="rgba(255,0,204,0.35)" stroke-width="1.5"/>
+        <!-- Icône stylisée : deux silhouettes face à face -->
+        <!-- Mentor -->
+        <circle cx="72" cy="70" r="22" fill="rgba(255,0,204,0.7)"/>
+        <ellipse cx="72" cy="130" rx="28" ry="20" fill="rgba(255,0,204,0.5)"/>
+        <!-- Mentoré -->
+        <circle cx="158" cy="70" r="22" fill="rgba(109,45,145,0.7)"/>
+        <ellipse cx="158" cy="130" rx="28" ry="20" fill="rgba(109,45,145,0.5)"/>
+        <!-- Flèche double entre les deux -->
+        <path d="M 100 73 L 130 73" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+        <polygon points="128,68 138,73 128,78" fill="white" opacity="0.9"/>
+        <polygon points="102,68 92,73 102,78"  fill="white" opacity="0.9"/>
+        <!-- Bulles de parole stylisées -->
+        <rect x="48" y="155" width="60" height="28" rx="8" fill="rgba(255,0,204,0.4)"/>
+        <polygon points="58,183 50,196 72,183" fill="rgba(255,0,204,0.4)"/>
+        <rect x="122" y="155" width="60" height="28" rx="8" fill="rgba(109,45,145,0.4)"/>
+        <polygon points="132,183 180,183 172,196" fill="rgba(109,45,145,0.4)"/>
+        <!-- Label bas -->
+        <text x="115" y="218" text-anchor="middle" font-family="Playfair Display, serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.8)">MENTORAT LD</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- OBJECTIFS -->
+  <section id="objectifs" aria-labelledby="titre-objectifs">
+    <h2 class="section-title" id="titre-objectifs">Objectifs pédagogiques</h2>
+    <p class="section-sub">À l'issue de la formation, vous serez capable de :</p>
+    <div class="objectifs-grid">
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">01</div>
+        <p>Identifier les différences entre <strong>mentorat, coaching, conseil</strong> et management.</p>
+      </div>
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">02</div>
+        <p>Analyser sa propre posture à partir de son <strong>profil DISC</strong> (2 points de vigilance).</p>
+      </div>
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">03</div>
+        <p>Adopter l'<strong>écoute active</strong> via 3 techniques clés en situation guidée.</p>
+      </div>
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">04</div>
+        <p>Formuler <strong>5 questions ouvertes</strong> favorisant l'autonomie du mentoré.</p>
+      </div>
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">05</div>
+        <p>Adapter sa communication aux différents <strong>profils de l'innovation sociale</strong>.</p>
+      </div>
+      <div class="objectif-card scroll-reveal">
+        <div class="obj-num">06</div>
+        <p>Coconstruire et formaliser un <strong>cadre de mentorat éthique</strong> et partagé.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section id="programme" aria-labelledby="titre-programme">
+    <h2 class="section-title" id="titre-programme">Programme de la journée</h2>
+    <p class="section-sub">7 séquences · 09:00 – 16:50 · Cliquez sur un bloc pour le détail</p>
+
+    <!-- BARRE DE PROGRESSION -->
+    <div class="timeline-wrap" role="img" aria-label="Barre de progression visuelle de la journée de formation">
+      <div class="timeline">
+        <div class="tl-block tl-s1" onclick="openModule(0)" title="Accueil & cadrage – 20 min">
+          <span>Accueil</span>
+          <span class="tl-time">09:00</span>
+        </div>
+        <div class="tl-block tl-s2" onclick="openModule(1)" title="Fondamentaux – 50 min">
+          <span>Fondamentaux</span>
+          <span class="tl-time">09:20</span>
+        </div>
+        <div class="tl-block tl-s3" onclick="openModule(2)" title="Posture – 45 min">
+          <span>Posture</span>
+          <span class="tl-time">10:10</span>
+        </div>
+        <div class="tl-block tl-p1" title="Pause – 15 min">☕</div>
+        <div class="tl-block tl-s4" onclick="openModule(3)" title="Écoute active – 1h20">
+          <span>Écoute</span>
+          <span class="tl-time">11:10</span>
+        </div>
+        <div class="tl-block tl-dej" title="Déjeuner – 1h30">🍽 Déj.</div>
+        <div class="tl-block tl-s5" onclick="openModule(4)" title="Communication – 1h15">
+          <span>Commun.</span>
+          <span class="tl-time">14:00</span>
+        </div>
+        <div class="tl-block tl-p2" title="Pause – 15 min">☕</div>
+        <div class="tl-block tl-s6" onclick="openModule(5)" title="Structurer – 1h">
+          <span>Structurer</span>
+          <span class="tl-time">15:30</span>
+        </div>
+        <div class="tl-block tl-s7" onclick="openModule(6)" title="Conclusion – 20 min">
+          <span>Fin</span>
+          <span class="tl-time">16:30</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-legend" aria-hidden="true">
+      <div class="tl-leg-item"><div class="tl-dot" style="background:var(--violet)"></div> Séquences actives</div>
+      <div class="tl-leg-item"><div class="tl-dot" style="background:#333"></div> Pauses / déjeuner</div>
+      <div class="tl-leg-item" style="font-style:italic; opacity:0.65; font-size:0.75rem;">💡 Cliquez sur un bloc pour ouvrir la séquence</div>
+    </div>
+
+    <div class="programme-list" role="list">
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">09:00<br>09:20</div>
+          <div><div class="mod-title">Séq. 1 · Accueil &amp; cadrage</div><div class="mod-subtitle">20 min · Créer un climat de confiance</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Créer un climat de confiance, expliciter le cadre, recueillir les attentes.</p>
+          <div class="tag-row">
+            <span class="method-tag">🎯 Icebreaker inclusif (binômes assis)</span>
+            <span class="method-tag">📋 Recueil des attentes visuel</span>
+            <span class="method-tag">🔍 Clarification des objectifs</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Oral + écrit · Rythme lent · Supports contrastés</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">09:20<br>10:10</div>
+          <div><div class="mod-title">Séq. 2 · Fondamentaux du mentorat</div><div class="mod-subtitle">50 min · Identifier les spécificités du mentorat</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Identifier les spécificités du mentorat vs coaching, conseil et management.</p>
+          <div class="tag-row">
+            <span class="method-tag">📖 Apport court</span>
+            <span class="method-tag">💬 Débat guidé à partir de situations réelles</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Pas de jeu de rôle · Supports lisibles</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">10:10<br>10:55</div>
+          <div><div class="mod-title">Séq. 3 · Posture du mentor</div><div class="mod-subtitle">45 min · Expertise vs accompagnement</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Analyser sa posture actuelle et identifier ses automatismes via le profil DISC.</p>
+          <div class="tag-row">
+            <span class="method-tag">🧭 Auto-diagnostic DISC</span>
+            <span class="method-tag">👥 Échanges en sous-groupes</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Groupes fixes · Consignes simples</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pause-row">☕ <strong>Pause</strong> · 10:55 – 11:10 · PMR-friendly</div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">11:10<br>12:30</div>
+          <div><div class="mod-title">Séq. 4 · Écoute active &amp; questionnement</div><div class="mod-subtitle">1h20 · Formuler des questions ouvertes</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Adopter une posture d'écoute active et formuler 5 questions ouvertes favorisant l'autonomie.</p>
+          <div class="tag-row">
+            <span class="method-tag">🎭 Mises en situation guidées (sans exposition)</span>
+            <span class="method-tag">👁 Observation croisée</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Scénarios écrits · Rôles au choix</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pause-row">🍽 <strong>Pause déjeuner</strong> · 12:30 – 14:00</div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">14:00<br>15:15</div>
+          <div><div class="mod-title">Séq. 5 · Adapter sa communication</div><div class="mod-subtitle">1h15 · Profils variés de l'innovation sociale</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Adapter sa communication aux différents profils de l'innovation sociale.</p>
+          <div class="tag-row">
+            <span class="method-tag">📚 Études de cas contextualisées</span>
+            <span class="method-tag">🌍 Innovation sociale</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Lecture facilitée · Supports multi-formats</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pause-row">☕ <strong>Pause</strong> · 15:15 – 15:30</div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">15:30<br>16:30</div>
+          <div><div class="mod-title">Séq. 6 · Structurer la relation de mentorat</div><div class="mod-subtitle">1h · Coconstruire un cadre éthique</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Structurer un cadre clair, éthique et sécurisant pour la relation de mentorat.</p>
+          <div class="tag-row">
+            <span class="method-tag">✍ Co-construction collective</span>
+            <span class="method-tag">📄 Charte mentorat partagée</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Travail collectif visuel · Participation graduée</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="module" role="listitem">
+        <button class="module-btn" aria-expanded="false" onclick="toggleModule(this)">
+          <div class="mod-time">16:30<br>16:50</div>
+          <div><div class="mod-title">Séq. 7 · Conclusion &amp; ancrage</div><div class="mod-subtitle">20 min · Évaluation &amp; engagement individuel</div></div>
+          <div class="mod-arrow">▼</div>
+        </button>
+        <div class="module-body">
+          <p><strong>Objectif :</strong> Évaluer les apprentissages, identifier une idée clé et définir une action concrète.</p>
+          <div class="tag-row">
+            <span class="method-tag">📊 Évaluation à chaud</span>
+            <span class="method-tag">🎯 Plan d'action individuel</span>
+          </div>
+          <div class="tag-row">
+            <span class="access-tag">♿ Oral/écrit au choix</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section id="pratique" aria-labelledby="titre-pratique">
+    <h2 class="section-title" id="titre-pratique">Informations pratiques</h2>
+    <p class="section-sub">Tout ce qu'il faut savoir avant de vous inscrire</p>
+    <div class="infos-grid">
+      <div class="info-card scroll-reveal"><div class="info-icon">⏱</div><div class="info-label">Durée</div><div class="info-value">7 heures · 1 journée</div></div>
+      <div class="info-card scroll-reveal"><div class="info-icon">👥</div><div class="info-label">Public cible</div><div class="info-value">Mentors programme LD · Entrepreneurs expérimentés · Dirigeants</div></div>
+      <div class="info-card scroll-reveal"><div class="info-icon">✅</div><div class="info-label">Prérequis</div><div class="info-value">Expertise entrepreneuriale · Profil DISC réalisé · Ressources inversées consultées</div></div>
+      <div class="info-card scroll-reveal"><div class="info-icon">🏫</div><div class="info-label">Modalité</div><div class="info-value">Présentiel · Méthodes actives · Facilitation collective</div></div>
+      <div class="info-card scroll-reveal"><div class="info-icon">📅</div><div class="info-label">Délai d'accès</div><div class="info-value">Réponse sous 48h · Mise en place sous 28 jours</div></div>
+      <div class="info-card scroll-reveal"><div class="info-icon">💶</div><div class="info-label">Tarif</div><div class="info-value">Sur devis · Nous contacter</div></div>
+    </div>
+  </section>
+
+  <!-- LIEU & CARTE -->
+  <section id="lieu" aria-labelledby="titre-lieu">
+    <h2 class="section-title" id="titre-lieu">Lieu de formation</h2>
+    <p class="section-sub">8 rue Chanzy, 78500 Sartrouville · Accessible PMR</p>
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.5!2d2.1635!3d48.9381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s8+Rue+Chanzy%2C+78500+Sartrouville%2C+France!5e0!3m2!1sfr!2sfr!4v1"
+        loading="lazy"
+        title="Carte – 8 rue Chanzy, 78500 Sartrouville"
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Carte interactive du lieu de formation à Sartrouville">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- TÉLÉCHARGEMENTS -->
+  <section id="telechargements" aria-labelledby="titre-dl">
+    <h2 class="section-title" id="titre-dl">Documents à télécharger</h2>
+    <p class="section-sub">Préparez votre venue avec nos ressources pédagogiques</p>
+    <div class="dl-grid">
+      <a href="programme.pdf" class="dl-btn" download aria-label="Télécharger le programme de formation PDF">
+        <div class="dl-icon">📋</div>
+        <div>
+          <div>Programme de formation</div>
+          <div class="dl-subtitle">PDF · Contenu détaillé de la journée</div>
+        </div>
+      </a>
+      <a href="livret_stagiaire.pdf" class="dl-btn" download aria-label="Télécharger le livret stagiaire PDF">
+        <div class="dl-icon">📖</div>
+        <div>
+          <div>Livret stagiaire</div>
+          <div class="dl-subtitle">PDF · Exercices &amp; ressources personnelles</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="temoignages" aria-labelledby="titre-temoignages">
+    <h2 class="section-title" id="titre-temoignages">Témoignages</h2>
+    <p class="section-sub">Ce que disent les participants des précédentes sessions</p>
+    <div class="temoignages-grid">
+
+      <div class="temoignage-card scroll-reveal">
+        <div class="stars">★★★★★</div>
+        <p class="temoignage-texte">Une journée qui m'a permis de prendre du recul sur ma posture. Je suis reparti avec des outils concrets et une vraie conscience de mes automatismes.</p>
+        <div class="temoignage-auteur">
+          <div class="tem-avatar">JM</div>
+          <div>
+            <div class="tem-name">Jean-Marc D.</div>
+            <div class="tem-role">Dirigeant · Promotion 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="temoignage-card scroll-reveal">
+        <div class="stars">★★★★★</div>
+        <p class="temoignage-texte">La facilitation collective m'a vraiment surprise. On n'est jamais mis en difficulté, tout est sécurisé. La charte co-construite en fin de journée est un vrai outil de travail.</p>
+        <div class="temoignage-auteur">
+          <div class="tem-avatar">SC</div>
+          <div>
+            <div class="tem-name">Sophie C.</div>
+            <div class="tem-role">Entrepreneur·e sociale · Promotion 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="temoignage-card scroll-reveal">
+        <div class="stars">★★★★☆</div>
+        <p class="temoignage-texte">Le diagnostic DISC a été une révélation. J'ai enfin compris pourquoi j'avais tendance à donner des solutions plutôt qu'à laisser l'espace à mon mentoré.</p>
+        <div class="temoignage-auteur">
+          <div class="tem-avatar">PR</div>
+          <div>
+            <div class="tem-name">Philippe R.</div>
+            <div class="tem-role">Cadre dirigeant · Promotion 2023</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORMULAIRE D'INSCRIPTION -->
+  <section id="inscription" aria-labelledby="titre-inscription">
+    <h2 class="section-title" id="titre-inscription">S'inscrire à la formation</h2>
+    <p class="section-sub">Complétez le formulaire ci-dessous · Réponse sous 48h</p>
+    <div class="form-wrapper">
+      <form id="inscriptionForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email professionnel *</label>
+            <input type="email" id="email" name="email" placeholder="prenom.nom@entreprise.fr" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="tel" placeholder="06 XX XX XX XX" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="organisation">Organisation / Entreprise *</label>
+          <input type="text" id="organisation" name="organisation" placeholder="Nom de votre organisation" required>
+        </div>
+        <div class="form-group">
+          <label for="profil">Votre profil</label>
+          <select id="profil" name="profil">
+            <option value="">Sélectionnez votre profil…</option>
+            <option value="dirigeant">Dirigeant·e d'entreprise</option>
+            <option value="entrepreneur-social">Entrepreneur·e social·e</option>
+            <option value="cadre">Cadre dirigeant·e</option>
+            <option value="mentor">Mentor expérimenté</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message ou questions particulières</label>
+          <textarea id="message" name="message" placeholder="Besoins spécifiques, questions sur le programme, aménagements d'accessibilité…"></textarea>
+        </div>
+        <button type="submit" class="form-btn">
+          ✉ Envoyer ma demande d'inscription
+        </button>
+      </form>
+      <div class="form-success" id="formSuccess" role="alert">
+        ✅ Merci ! Votre demande a bien été reçue. Nathalie Salmon vous recontactera sous 48h à l'adresse indiquée.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / ÉQUIPE -->
+  <section id="contact" aria-labelledby="titre-contact">
+    <h2 class="section-title" id="titre-contact">Votre formatrice</h2>
+    <p class="section-sub">Une expertise au service de votre parcours de mentor</p>
+    <div class="equipe-card scroll-reveal">
+      <div class="avatar" aria-hidden="true">NS</div>
+      <div>
+        <div class="equipe-name">Nathalie Salmon</div>
+        <div class="equipe-role">Experte en formation professionnelle · Mentorat · Ingénierie pédagogique</div>
+        <p style="font-size:0.88rem; color:#666; margin-top:6px;">Formatrice experte en postures d'accompagnement, passionnée par le développement de l'autonomie et la construction de cadres sécurisants. Elle intervient auprès de dirigeants et d'entrepreneurs dans le champ de l'innovation sociale.</p>
+        <div class="equipe-contacts">
+          <a href="tel:+33601020304" class="contact-link">📞 06 01 02 03 04</a>
+          <a href="mailto:mons@outlook.com" class="contact-link">✉ mons@outlook.com</a>
+          <span class="contact-link">🕐 Lun-Ven · 9h–18h</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── RSE ── -->
+<div class="rse-strip" role="complementary" aria-label="Engagements RSE et accessibilité">
+  <div class="rse-inner">
+    <div class="rse-item">♿ Formation inclusive &amp; PMR-friendly</div>
+    <div class="rse-item">👁 Supports DYS et malvoyance</div>
+    <div class="rse-item">🌿 Conception universelle</div>
+    <div class="rse-item">🤝 Politique de non-discrimination</div>
+    <div class="rse-item">📊 Évaluation NPS systématique</div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Posture &amp; Outils<br>du <span>Mentorat LD</span></div>
+      <p>Formation intra-entreprise conçue pour la<br><strong style="color:white">Fondation LD / ODC</strong>.<br>Accompagner les entrepreneurs de l'innovation sociale.</p>
+      <div style="margin-top:16px; font-size:0.85rem;">
+        <strong style="color:white">Nathalie Salmon</strong><br>
+        <a href="mailto:mons@outlook.com">mons@outlook.com</a> ·
+        <a href="tel:+33601020304">06 01 02 03 04</a><br>
+        Lun-Ven · 9h–18h
+      </div>
+    </div>
+    <div>
+      <strong style="color:white; font-size:1rem;">Accessibilité &amp; Inclusion</strong>
+      <p style="margin:12px 0; font-size:0.88rem;">Notre organisme s'engage pour une formation accessible à toutes et tous. Consultez notre politique complète d'inclusion et de gestion du handicap.</p>
+      <a href="politique-inclusion.pdf" class="inclusion-btn">📄 Politique d'inclusion &amp; handicap</a>
+      <p style="margin-top:14px; font-size:0.8rem; opacity:0.6;">
+        Référent handicap : <a href="mailto:mons@outlook.com">mons@outlook.com</a><br>
+        Pour toute adaptation, contactez-nous au moins 4 semaines avant la formation.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 MONS Formation · Nathalie Salmon ·
+    <a href="mailto:mons@outlook.com">mons@outlook.com</a>
+  </div>
+</footer>
+
+<script>
+  // ── Accordéon ──
+  function toggleModule(btn) {
+    const body = btn.nextElementSibling;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    body.classList.toggle('open', !expanded);
+  }
+
+  // ── Ouvrir module depuis la barre de progression ──
+  function openModule(index) {
+    const modules = document.querySelectorAll('.module .module-btn');
+    if (modules[index]) {
+      const btn = modules[index];
+      const body = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', 'true');
+      body.classList.add('open');
+      btn.closest('.module').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  // ── Nav active ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.topnav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.topnav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ── Formulaire ──
+  document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const prenom  = document.getElementById('prenom').value.trim();
+    const nom     = document.getElementById('nom').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const org     = document.getElementById('organisation').value.trim();
+
+    if (!prenom || !nom || !email || !org) {
+      alert('Merci de remplir tous les champs obligatoires (*).');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Veuillez entrer une adresse email valide.');
+      return;
+    }
+    // Simule l'envoi (à remplacer par un vrai backend ou Formspree)
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
